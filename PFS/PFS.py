@@ -12,7 +12,6 @@ db = SQLAlchemy(app)
 
 from feedback.models import Category,Feedback
 
-
 from feedback import back
 app.register_blueprint(back)
 
