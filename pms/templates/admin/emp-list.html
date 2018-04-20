@@ -1,0 +1,62 @@
+{% extends 'admin/layout.html' %}
+{% import 'admin/helper.html' as helper %}
+
+{% block stylesheets %} {% endblock %} {% block page_header %}
+
+    <div class="page-head">
+  <h3 class="m-b-less">
+            人事列表
+        </h3>
+  <!--<span class="sub-title">Welcome to Static Table</span>-->
+  <div class="state-information">
+    <ol class="breadcrumb m-b-less bg-less">
+      <li><a href="#">首页</a></li>
+      <li><a href="#">人事管理</a></li>
+      <li class="active">人事列表</li>
+    </ol>
+  </div>
+</div>
+{% endblock %} {% block main_content %}
+<div class="wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <section class="panel">
+        <header class="panel-heading head-border">
+          员工列表
+        </header>
+        <table class="table table-striped custom-table table-hover">
+          <thead>
+            <tr>
+              <th>编号</th>
+              <th class="hidden-xs">姓名</th>
+              <th>性别</th>
+              <th>生日</th>
+              <th>地址</th>
+              <th class="hidden-xs">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items.items %}
+            <tr>
+              <td><a href="#">{{item.id}}</a></td>
+              <td class="hidden-xs">{{item.name}}</td>
+              <td>{{item.gender}}</td>
+              <td>{{item.birthdate.strftime('%Y-%m-%d')}}</td>
+              <td>{{item.address}}</td>
+              <td class="hidden-xs">
+                <a href="#" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                <a href="{{ url_for('.emp_edit',id = item.id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                <a href="{{ url_for('admin.emp_del',id = item.id) }}" class="btn btn-danger btn-xs" title="删除"><i class="fa fa-trash-o "></i></a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {{ helper.render_admin_pagination(items,'admin.emp_list') }}
+        <div>
+      </section>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %} {% block scripts %} {% endblock %}

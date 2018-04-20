@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工列表</title>
+</head>
+<body>
+    <h1>员工列表</h1>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>工资</td>
+            <td>地址</td>
+            <td>操作</td>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.gender }}</td>
+            <td>{{ emp.salary }}</td>
+            <td>{{ emp.address }}</td>
+            <td><a href="/emp/{{ emp.id }}/">查看</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+
