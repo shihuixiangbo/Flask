@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/edit.css') }}">
+{% endblock %}
+
 {% block main_content %}
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -37,9 +42,9 @@
         <div class="form-group">
           <label for="image" class="control-label col-md-2">图片</label>
           <div class="col-md-2">
-              {% if current_feedback.Image == null %}
+{#              {% if current_feedback.Image == null %}#}
                   <img src="{{ url_for('back.render_file',filename = current_feedback.Image) }}" alt="{{ current_feedback.Subject }}">
-              {% endif %}
+{#              {% endif %}#}
 
           </div>
         </div>
